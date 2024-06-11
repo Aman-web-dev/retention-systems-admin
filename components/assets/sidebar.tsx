@@ -35,7 +35,7 @@ function Sidebar() {
             <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
             <span className="sr-only">Acme Inc</span>
           </Link>
-          <TooltipProvider>
+          {/* <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
@@ -76,7 +76,7 @@ function Sidebar() {
             </TooltipTrigger>
             <TooltipContent side="right">Products</TooltipContent>
           </Tooltip>
-          </TooltipProvider>
+          </TooltipProvider> */}
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -91,7 +91,7 @@ function Sidebar() {
               <TooltipContent side="right">Customers</TooltipContent>
             </Tooltip>
           </TooltipProvider>
-          <TooltipProvider>
+          {/* <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
@@ -120,7 +120,7 @@ function Sidebar() {
               </TooltipTrigger>
               <TooltipContent side="right">Settings</TooltipContent>
             </Tooltip>
-          </TooltipProvider>
+          </TooltipProvider> */}
         </nav>
       </aside>
 

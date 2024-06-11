@@ -20,53 +20,79 @@ import {
   Select,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea"
+import { BusinessData } from "@/types/businessdata";
 
 
 
-
-interface BusinessData {
-  emailAddress: string;
-  accountType: "Small" | "Medium" | "Large";
-  BusinessName?: string; // Optional
-  BusinessPhoneNumber: string;
-  BusinessPrompt: string;
-}
 
 interface CreateBusinessFormProps {
   initialBusinessData?: BusinessData; // Optional prop for editing
 }
 
 
+
+
 const formSchema = z
   .object({
-    emailAddress: z.string().email(),
-    accountType: z.enum(["Small","Medium","Large"]),
-    BusinessName: z.string().optional(),
-    BusinessPhoneNumber:z.string().max(10),
-    BusinessPrompt:z.string()
+    emailAddress: z.string().email({ message: "Invalid email address" }),
+    accountType: z.enum(["Small", "Medium", "Large"]),
+    BusinessName: z
+      .string()
+      .min(1, { message: "Business name is required" })
+      .optional(),
+    BusinessPhoneNumber: z
+      .string()
+      .max(10, { message: "Phone number cannot exceed 10 digits" })
+      .min(1, { message: "Phone number is required" }),
+    BusinessPrompt: z
+      .string()
+      .min(1, { message: "Business prompt is required" }),
+    api_key: z.string().min(1, { message: "API key is required" }),
+    private_app_id: z
+      .string()
+      .min(1, { message: "Private app ID is required" }),
+    project_id: z.string().min(1, { message: "Project ID is required" }),
   })
-  
   .refine(
     (data) => {
-      if (data.accountType === "Small"||"Medium"||"Large") {
-        return !!data.BusinessName;
+      if (data.accountType !== "Small") {
+        // BusinessName is required for Medium and Large accounts
+        return data.BusinessName !== undefined && data.BusinessName.length > 0;
       }
-      return true;
+      return true; // BusinessName is optional for Small accounts
     },
     {
       message: "Business name is required",
       path: ["BusinessName"],
     }
-  );
+  )
+ 
 
-  export default function CreateBusinessForm({ initialBusinessData }: CreateBusinessFormProps) {
+// Usage Example
+try {
+  const result = formSchema.parse({
+    // your data
+  });
+  // result contains the parsed and validated data
+} catch (error) {
+  if (error instanceof z.ZodError) {
+    console.error(error.issues); // Array of validation error details
+  } else {
+    // Handle other potential errors
+  }
+}
+
+export default function CreateBusinessForm({ initialBusinessData }: CreateBusinessFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues:initialBusinessData?initialBusinessData:{
+    defaultValues: initialBusinessData ? initialBusinessData : {
       emailAddress: "",
-      BusinessPhoneNumber:"",
+      BusinessPhoneNumber: "",
       BusinessName: "",
-      BusinessPrompt:""
+      BusinessPrompt: "",
+      api_key: "",
+      private_app_id: "",
+      project_id: ""
     },
   });
 
@@ -127,23 +153,23 @@ const formSchema = z
               );
             }}
           />
-          
-            <FormField
-              control={form.control}
-              name="BusinessName"
-              render={({ field }) => {
-                return (
-                  <FormItem>
-                    <FormLabel>Business name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Business name" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                );
-              }}
-            />
-       
+
+          <FormField
+            control={form.control}
+            name="BusinessName"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Business name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Business name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+
           <FormField
             control={form.control}
             name="BusinessPhoneNumber"
@@ -159,7 +185,71 @@ const formSchema = z
               );
             }}
           />
-            <FormField
+
+
+
+          <FormField
+            control={form.control}
+            name="project_id"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Project ID</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Project ID"
+                      type="text"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+
+          <FormField
+            control={form.control}
+            name="api_key"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Api Key</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="API Key"
+                      type="text"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+
+
+          <FormField
+            control={form.control}
+            name="private_app_id"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Private App ID</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Private App ID"
+                      type="text"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+
+          <FormField
             control={form.control}
             name="BusinessPrompt"
             render={({ field }) => {
@@ -167,14 +257,15 @@ const formSchema = z
                 <FormItem>
                   <FormLabel>Business Prompt</FormLabel>
                   <FormControl>
-                  <Textarea placeholder="You are a Helpful AI bot " />
+                    <Textarea placeholder="You are a Helpful AI bot " />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               );
             }}
           />
-        
+
+
           <Button type="submit" className="w-full">
             Create Business
           </Button>

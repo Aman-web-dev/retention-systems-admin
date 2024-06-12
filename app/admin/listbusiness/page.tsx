@@ -176,23 +176,23 @@ export default function Dashboard() {
                               </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end">
-                              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                              {/* <DropdownMenuLabel>Actions</DropdownMenuLabel> */}
 
                               <DialogWrapper
                                 trigger={
-                                  <Button variant="outline">
+                                  <Button variant="outline" className="border-0 hover:bg-white">
                                     Edit Profile
                                   </Button>
                                 }
                                 title="Edit Business Profile"
                                 description="Make changes to your profile here. Click save when you're done."
                                 footer={
-                                  <Button type="submit">Save Changes</Button>
+                                  <Button type="submit" className="border-0">Save Changes</Button>
                                 }
                               >
                                 <CreateBusinessForm buttonText="Save Changes"/>
                               </DialogWrapper>
-                              <DropdownMenuItem>Delete</DropdownMenuItem>
+                              {/* <DropdownMenuItem>Delete</DropdownMenuItem> */}
                             </DropdownMenuContent>
                           </DropdownMenu>
                         </TableCell>

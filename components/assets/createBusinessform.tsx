@@ -26,7 +26,8 @@ import { BusinessData } from "@/types/businessdata";
 
 
 interface CreateBusinessFormProps {
-  initialBusinessData?: BusinessData; // Optional prop for editing
+  initialBusinessData?: BusinessData;
+  buttonText:string // Optional prop for editing
 }
 
 
@@ -82,7 +83,7 @@ try {
   }
 }
 
-export default function CreateBusinessForm({ initialBusinessData }: CreateBusinessFormProps) {
+export default function CreateBusinessForm({ initialBusinessData,buttonText }: CreateBusinessFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: initialBusinessData ? initialBusinessData : {
@@ -103,7 +104,7 @@ export default function CreateBusinessForm({ initialBusinessData }: CreateBusine
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24  ">
+    <main className="flex min-h-screen flex-col items-center justify-between my-16">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSubmit)}
@@ -267,7 +268,7 @@ export default function CreateBusinessForm({ initialBusinessData }: CreateBusine
 
 
           <Button type="submit" className="w-full">
-            Create Business
+           {buttonText}
           </Button>
         </form>
       </Form>

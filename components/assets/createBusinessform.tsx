@@ -31,42 +31,38 @@ interface CreateBusinessFormProps {
 }
 
 
-
-
-const formSchema = z
-  .object({
-    emailAddress: z.string().email({ message: "Invalid email address" }),
-    accountType: z.enum(["Small", "Medium", "Large"]),
-    BusinessName: z
-      .string()
-      .min(1, { message: "Business name is required" })
-      .optional(),
-    BusinessPhoneNumber: z
-      .string()
-      .max(10, { message: "Phone number cannot exceed 10 digits" })
-      .min(1, { message: "Phone number is required" }),
-    BusinessPrompt: z
-      .string()
-      .min(1, { message: "Business prompt is required" }),
-    api_key: z.string().min(1, { message: "API key is required" }),
-    private_app_id: z
-      .string()
-      .min(1, { message: "Private app ID is required" }),
-    project_id: z.string().min(1, { message: "Project ID is required" }),
-  })
-  .refine(
-    (data) => {
-      if (data.accountType !== "Small") {
-        // BusinessName is required for Medium and Large accounts
-        return data.BusinessName !== undefined && data.BusinessName.length > 0;
-      }
-      return true; // BusinessName is optional for Small accounts
-    },
-    {
-      message: "Business name is required",
-      path: ["BusinessName"],
+const formSchema = z.object({
+  emailAddress: z.string().email({ message: "Invalid email address" }).optional(),
+  accountType: z.enum(["Small", "Medium", "Large"]).optional(),
+  business_name: z
+    .string()
+    .min(1, { message: "Business name is required" })
+    .optional(),
+  business_number: z.union([
+    z.string().regex(/^\d+$/, { message: "Invalid phone number" }),
+    z.number(),
+  ]),
+  business_prompt: z.string().min(1, { message: "Business prompt is required" }),
+  api_key: z.string().min(1, { message: "API key is required" }).nullable(),
+  private_app_id: z
+    .string()
+    .min(1, { message: "Private app ID is required" })
+    .nullable(),
+  project_id: z.string().min(1, { message: "Project ID is required" }).nullable(),
+  created_at: z.string().optional(), // This might not be needed in your form input
+}).refine(
+  (data) => {
+    if (data.accountType !== "Small") {
+      // business_name is required for Medium and Large accounts
+      return data.business_name !== undefined && data.business_name.length > 0;
     }
-  )
+    return true; // business_name is optional for Small accounts
+  },
+  {
+    message: "Business name is required",
+    path: ["business_name"],
+  }
+);
  
 
 // Usage Example
@@ -88,9 +84,9 @@ export default function CreateBusinessForm({ initialBusinessData,buttonText }: C
     resolver: zodResolver(formSchema),
     defaultValues: initialBusinessData ? initialBusinessData : {
       emailAddress: "",
-      BusinessPhoneNumber: "",
-      BusinessName: "",
-      BusinessPrompt: "",
+      business_number: "",
+      business_name: "",
+      business_prompt: "",
       api_key: "",
       private_app_id: "",
       project_id: ""
@@ -157,7 +153,7 @@ export default function CreateBusinessForm({ initialBusinessData,buttonText }: C
 
           <FormField
             control={form.control}
-            name="BusinessName"
+            name="business_name"
             render={({ field }) => {
               return (
                 <FormItem>
@@ -173,7 +169,7 @@ export default function CreateBusinessForm({ initialBusinessData,buttonText }: C
 
           <FormField
             control={form.control}
-            name="BusinessPhoneNumber"
+            name="business_number"
             render={({ field }) => {
               return (
                 <FormItem>
@@ -188,7 +184,7 @@ export default function CreateBusinessForm({ initialBusinessData,buttonText }: C
           />
 
 
-
+{/* 
           <FormField
             control={form.control}
             name="project_id"
@@ -248,11 +244,11 @@ export default function CreateBusinessForm({ initialBusinessData,buttonText }: C
                 </FormItem>
               );
             }}
-          />
+          /> */}
 
           <FormField
             control={form.control}
-            name="BusinessPrompt"
+            name="business_prompt"
             render={({ field }) => {
               return (
                 <FormItem>

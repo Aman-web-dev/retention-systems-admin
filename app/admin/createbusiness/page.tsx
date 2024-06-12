@@ -9,7 +9,7 @@ function page() {
 
 <h2 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white mt-8 text-center">Create Business</h2>
 
-      <CreateBusinessForm/>
+      <CreateBusinessForm buttonText='Create Business'/>
     </div>
   )
 }

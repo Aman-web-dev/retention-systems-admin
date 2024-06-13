@@ -144,7 +144,7 @@ export default function Dashboard() {
        
         <Card x-chunk="dashboard-05-chunk-2">
         <CardHeader className="pb-2">
-              <CardDescription>This Year &apos s</CardDescription>
+              <CardDescription>This Year</CardDescription>
               <CardTitle className="text-4xl">Analytics</CardTitle>
             </CardHeader>
 

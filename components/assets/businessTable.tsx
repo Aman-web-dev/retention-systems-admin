@@ -99,7 +99,7 @@ function BusinessTable({ businesses }: { businesses: BusinessData[] }) {
                 {businesses.length > 1
                   ? businesses.map((business: BusinessData) => (
                       <TableRow key={business.business_number}>
-                        <Link href={`/admin/dashboard/${business.business_number}`}>
+                        <Link href={`/admin/business/${business.business_number}`}>
                           <TableCell className="font-medium">
                             {business.business_name}
                           </TableCell>

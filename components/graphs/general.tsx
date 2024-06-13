@@ -21,10 +21,10 @@ import {
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
-const MyResponsiveBump = (data : any) =>
+const MyResponsiveBump = (props : any) =>
  ( // @ts-ignore
     <ResponsiveBump
-      data={data}
+      data={props.data}
       colors={{ scheme: "spectral" }}
       lineWidth={3}
       activeLineWidth={6}

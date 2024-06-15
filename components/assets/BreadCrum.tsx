@@ -33,6 +33,7 @@ const BreadcrumbComponent = () => {
     } else {
       setPage(null);
     }
+  
   }, [pathname]);
 
   if (!page || page.length === 0) {
@@ -47,7 +48,9 @@ const BreadcrumbComponent = () => {
               return (
                 <>
                   <BreadcrumbItem>
-                  { <BreadcrumbLink asChild>
+                  {elem.text=='admin'?<BreadcrumbLink asChild>
+                      <Link href={'/'}>{"Home"}</Link>
+                    </BreadcrumbLink>: <BreadcrumbLink asChild>
                       <Link href={elem.path}>{elem.text.toUpperCase()}</Link>
                     </BreadcrumbLink>}
                   </BreadcrumbItem>

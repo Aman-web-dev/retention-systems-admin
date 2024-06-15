@@ -137,7 +137,7 @@ export default function Dashboard() {
                 </Button>
                 <Button size="sm" className="h-8 gap-1">
                   <PlusCircle className="h-3.5 w-3.5" />
-                  <Link href={"/admin/createbusiness"}>
+                  <Link href={"/admin/business/createbusiness"}>
                     <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                       Add Business
                     </span>

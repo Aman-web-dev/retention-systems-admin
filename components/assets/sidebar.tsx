@@ -83,11 +83,11 @@ export default function Sidebar({
           <div className="flex-1">
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
               <Link
-                href="/"
+                href="/admin"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <Home className="h-4 w-4" />
-                Home
+                Admin Home
               </Link>
               {/* <Link
                 href="#"
@@ -101,14 +101,14 @@ export default function Sidebar({
               </Link> */}
               <Link
                 href="/admin/business"
-                className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <Building2 className="h-4 w-4" />
                 Business{" "}
               </Link>
               <Link
                 href="/admin/settings"
-                className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <Settings className="h-4 w-4" />
                 Settings{" "}
@@ -133,7 +133,7 @@ export default function Sidebar({
         </div>
       </div>
       <div className="flex flex-col">
-        <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+        <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6 justify-between">
      <BreadcrumbComponent/>
           <Sheet>
             <SheetTrigger asChild>
@@ -212,8 +212,8 @@ export default function Sidebar({
               </div>
             </SheetContent>
           </Sheet>
-         
-          <DropdownMenu>
+         <div className="flex  flex-row gap-4">
+         <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
                 <CircleUser className="h-5 w-5" />
@@ -230,6 +230,8 @@ export default function Sidebar({
             </DropdownMenuContent>
           </DropdownMenu>
           <ModeToggle/>
+         </div>
+         
         </header>
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
         {children}

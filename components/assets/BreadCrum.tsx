@@ -1,102 +1,64 @@
-'use client'
+"use client";
 
-import { useRouter } from 'next/navigation';
-import { usePathname } from 'next/navigation'
-import { useState,useEffect } from 'react';
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-  } from "@/components/ui/breadcrumb";
- 
-import Link from 'next/link';
-const BreadcrumbComponent = () => {
-  const [page,setPage]=useState([""])
-  const path = usePathname()
-  console.log(path)
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
-useEffect(()=>{
-  const str = path;
-  const arr = str.split('/');
-  console.log(arr);
-  setPage(arr)
-},[path])
+interface BreadcrumbSegment {
+  text: string; // The displayed text of the segment
+  path: string; // The path this segment links to
+}
+
+import Link from "next/link";
+const BreadcrumbComponent = () => {
+  const [page, setPage] = useState<BreadcrumbSegment[] | null>(null);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (typeof pathname === 'string' && pathname.trim() !== '/') {
+      const segments = pathname.split('/').filter(Boolean);
+      const breadcrumbSegments: BreadcrumbSegment[] = segments.map((segment, index) => ({
+        text: segment,
+        path: `/${segments.slice(0, index + 1).join('/')}`,
+      }));
+      setPage(breadcrumbSegments);
+    } else {
+      setPage(null);
+    }
+  }, [pathname]);
+
+  if (!page || page.length === 0) {
+    return null; // Don't render breadcrumbs if there are none
+  }
 
   return (
     <Breadcrumb className="hidden md:flex">
-
-   
-
-      
       <BreadcrumbList>
-      {page.length>1?page.map((elem)=>{
-        return (
-          <>
-          {
-            elem===""?<BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href="/">{"Home"}</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>:""
-          }
-          <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            <Link href="/">{elem.toUpperCase()}</Link>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator/>
-        </>
-        )
-        
-        
-      }):""}
-        {/* <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            <Link href="/">Home</Link>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-       
-        {path === '/admin/business' ?(
-          <>
-           <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href="/admin/business">Business</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          </>
-        ): null  }
-
-{path === '/admin/settings' ?(
-          <>
-           <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href="/admin/settings">Settings</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          </>
-        ): null  }
-
-
-{path === '/admin/business/' ?(
-          <>
-           <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href="/admin/settings">Settings</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          </>
-        ): null  } */}
-    
+        {page.length > 0
+          ? page.map((elem) => {
+              return (
+                <>
+                  <BreadcrumbItem>
+                  { <BreadcrumbLink asChild>
+                      <Link href={elem.path}>{elem.text.toUpperCase()}</Link>
+                    </BreadcrumbLink>}
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                </>
+              );
+            })
+          : ""}
       </BreadcrumbList>
     </Breadcrumb>
   );
 };
 
-
-export default BreadcrumbComponent
+export default BreadcrumbComponent;

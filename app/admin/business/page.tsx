@@ -66,8 +66,8 @@ import BusinessTable from "@/components/assets/businessTable";
 import { BusinessData } from "@/types/businessdata";
 import { useEffect } from "react";
 import ListSkeletonDemo from "@/components/skeletons/ListSkeleton";
-
-
+import { UniversalCard } from "@/components/assets/UniversalCard";
+import WaveChart from "@/components/graphs/waveChart";
 
 export default async function Dashboard() {
 
@@ -82,12 +82,13 @@ let data = await getData()
 
   return (
     <Tabs defaultValue="all">
+    
       <div className="flex items-center">
         <TabsList>
           <TabsTrigger value="all">All</TabsTrigger>
           <TabsTrigger value="active">Active</TabsTrigger>
           <TabsTrigger value="inactive">Inactive</TabsTrigger>
-          <TabsTrigger value="archived" className="hidden sm:flex">
+          <TabsTrigger value="draftAccounts" className="hidden sm:flex">
             Drafts
           </TabsTrigger>
         </TabsList>
@@ -104,6 +105,12 @@ let data = await getData()
       </div>
       {
         data && <TabsContent value="all">
+             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+      </div>
         <Suspense fallback={<p>Loading...</p>}>
         <BusinessTable businesses={data} />
         </Suspense>
@@ -111,15 +118,40 @@ let data = await getData()
       }
      
       <TabsContent value="active">
-      <Suspense fallback={<p>Loading...</p>}>
-        <BusinessTable businesses={data} />
-        </Suspense>
+      <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+      </div>
+      <WaveChart/>
+      <WaveChart/>
+    </div>
       </TabsContent>
 
-      <TabsContent value="active">
-      <Suspense fallback={<p>Loading...</p>}>
-        <BusinessTable businesses={data} />
-        </Suspense>
+      <TabsContent value="inactive">
+      <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+      </div>
+      <WaveChart/>
+    </div>
+      </TabsContent>
+
+      <TabsContent value="draftAccounts">
+      <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+      </div>
+      <WaveChart/>
+    </div>
       </TabsContent>
     </Tabs>
   );

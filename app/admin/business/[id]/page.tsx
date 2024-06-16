@@ -15,6 +15,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Suspense } from "react";
 import { PlusCircle,Settings } from "lucide-react";
 import Link from "next/link";
+import WaveChart from "@/components/graphs/waveChart";
 
 export default function BusinessPage() {
   const params = useParams();
@@ -75,6 +76,7 @@ const UserEngagement = () => {
         <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
         <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
       </div>
+      <WaveChart/>
     </div>
   );
 };
@@ -86,12 +88,11 @@ const ChatBotPerformance = () => {
         <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
         <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
         <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+       
       </div>
+      <WaveChart/>
+      <WaveChart/>
+
     </div>
   );
 };
@@ -105,16 +106,9 @@ const QueryAnalysis = () => {
         <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
         <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
         <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
       </div>
+      <WaveChart/>
+      <WaveChart/>
     </div>
   );
 };
@@ -127,8 +121,11 @@ const   ConversionMetrics = () => {
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
         <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
         <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-       
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
       </div>
+      <WaveChart/>
+      <WaveChart/>
     </div>
   );
 };

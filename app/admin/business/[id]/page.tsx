@@ -22,7 +22,7 @@ export default function BusinessPage() {
   const businessId = params.id;
 
   return (
-    <Tabs defaultValue="UserEngagement">
+    <Tabs defaultValue="UserEngagement" className="w-[90%]">
 
       <div className="flex">
       <TabsList>

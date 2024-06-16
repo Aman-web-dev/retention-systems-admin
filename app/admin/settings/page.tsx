@@ -18,10 +18,11 @@ import {
 
 export default function TabsDemo() {
   return (
-    <Tabs defaultValue="account" className="w-[400px]">
-      <TabsList className="grid w-full grid-cols-2">
+    <Tabs defaultValue="account" className="w-[90%] mx-auto">
+      <TabsList className="grid w-full grid-cols-3">
         <TabsTrigger value="account">Account</TabsTrigger>
         <TabsTrigger value="password">Password</TabsTrigger>
+        <TabsTrigger value="Email">Email</TabsTrigger>
       </TabsList>
       <TabsContent value="account">
         <Card>
@@ -36,7 +37,7 @@ export default function TabsDemo() {
               <Label htmlFor="name">Name</Label>
               <Input id="name" defaultValue="Pedro Duarte" />
             </div>
-            <div className="space-y-1">
+            <div className="space-y-1"> 
               <Label htmlFor="username">Username</Label>
               <Input id="username" defaultValue="@peduarte" />
             </div>
@@ -61,6 +62,29 @@ export default function TabsDemo() {
             </div>
             <div className="space-y-1">
               <Label htmlFor="new">New password</Label>
+              <Input id="new" type="password" />
+            </div>
+          </CardContent>
+          <CardFooter>
+            <Button>Save password</Button>
+          </CardFooter>
+        </Card>
+      </TabsContent>
+      <TabsContent value="Email">
+        <Card>
+          <CardHeader>
+            <CardTitle>Email</CardTitle>
+            <CardDescription>
+              Change your email and backup email here. After saving, you&apos;ll be logged out.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <div className="space-y-1">
+              <Label htmlFor="current">Current Email</Label>
+              <Input id="current" type="email" />
+            </div>
+            <div className="space-y-1">
+              <Label htmlFor="new">Backup Email</Label>
               <Input id="new" type="password" />
             </div>
           </CardContent>

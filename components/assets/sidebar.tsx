@@ -109,10 +109,8 @@ export default function Sidebar({
       </div>
       <div className="flex flex-col">
         <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6 justify-between">
-        <div>
-        <BreadcrumbComponent/>
-        </div>
           <Sheet>
+          <BreadcrumbComponent/>
             <SheetTrigger asChild>
               <Button
                 variant="outline"

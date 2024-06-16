@@ -1,6 +1,5 @@
 "use client";
 import { useParams } from "next/navigation";
-import { Tabs, TabsContent } from "@radix-ui/react-tabs";
 import {
   Card,
   CardContent,
@@ -11,90 +10,125 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { UniversalCard } from "@/components/assets/UniversalCard";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Suspense } from "react";
+import { PlusCircle,Settings } from "lucide-react";
+import Link from "next/link";
 
 export default function BusinessPage() {
   const params = useParams();
   const businessId = params.id;
 
   return (
-  
-<div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2"> 
-<div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+    <Tabs defaultValue="UserEngagement">
 
-<Card x-chunk="dashboard-05-chunk-1">
-    <CardHeader className="pb-2">
-      <CardDescription>This Week</CardDescription>
-      <CardTitle className="text-4xl">$1,329</CardTitle>
-    </CardHeader>
-    <CardContent>
-      <div className="text-xs text-muted-foreground">
-        +25% from last week
-      </div>
-    </CardContent>
-    <CardFooter>
-      <Progress value={25} aria-label="25% increase" />
-    </CardFooter>
-  </Card>
-  <Card x-chunk="dashboard-05-chunk-2">
-    <CardHeader className="pb-2">
-      <CardDescription>This Month</CardDescription>
-      <CardTitle className="text-4xl">$5,329</CardTitle>
-    </CardHeader>
-    <CardContent>
-      <div className="text-xs text-muted-foreground">
-        +10% from last month
-      </div>
-    </CardContent>
-    <CardFooter>
-      <Progress value={12} aria-label="12% increase" />
-    </CardFooter>
-  </Card>
+      <div className="flex">
+      <TabsList>
+        <TabsTrigger value="UserEngagement">User Engagement</TabsTrigger>
+        <TabsTrigger value="ChatBotPerformance">Chat Bot Performance</TabsTrigger>
+        <TabsTrigger value="queryAnalysis">User Query Analysis</TabsTrigger>
+        <TabsTrigger value="conversionMetrics" className="hidden sm:flex">
+        Conversion Metrics
+        </TabsTrigger>
+      </TabsList>
+      <div className="ml-auto flex items-center gap-2">
+          <Button size="sm" className="h-8 gap-1">
+            <Settings className="h-3.5 w-3.5" />
+            <Link href={`/admin/business/${businessId}/settings`}>
+              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                Settings
+              </span>
+            </Link>
+          </Button>
+        </div>
 
-  <Card x-chunk="dashboard-05-chunk-1">
-    <CardHeader className="pb-2">
-      <CardDescription>This Week</CardDescription>
-      <CardTitle className="text-4xl">$1,329</CardTitle>
-    </CardHeader>
-    <CardContent>
-      <div className="text-xs text-muted-foreground">
-        +25% from last week
       </div>
-    </CardContent>
-    <CardFooter>
-      <Progress value={25} aria-label="25% increase" />
-    </CardFooter>
-  </Card>
-  <Card x-chunk="dashboard-05-chunk-2">
-    <CardHeader className="pb-2">
-      <CardDescription>This Month</CardDescription>
-      <CardTitle className="text-4xl">$5,329</CardTitle>
-    </CardHeader>
-    <CardContent>
-      <div className="text-xs text-muted-foreground">
-        +10% from last month
-      </div>
-    </CardContent>
-    <CardFooter>
-      <Progress value={12} aria-label="12% increase" />
-    </CardFooter>
-  </Card>
-</div>
+    
 
-<Card x-chunk="dashboard-05-chunk-2">
-    <CardHeader className="pb-2">
-      <CardDescription>This Month</CardDescription>
-      <CardTitle className="text-4xl">$5,329</CardTitle>
-    </CardHeader>
-    <CardContent>
-      <div className="text-xs text-muted-foreground">
-        +10% from last month
-      </div>
-    </CardContent>
-    <CardFooter>
-      <Progress value={12} aria-label="12% increase" />
-    </CardFooter>
-  </Card>
 
-</div>
+      <TabsContent value="UserEngagement">
+        <UserEngagement />
+      </TabsContent>
+
+      <TabsContent value="ChatBotPerformance">
+        <ChatBotPerformance />
+      </TabsContent>
+
+      <TabsContent value="queryAnalysis">
+        <QueryAnalysis/>
+      </TabsContent>
+
+      <TabsContent value="conversionMetrics">
+        <ConversionMetrics/>
+      </TabsContent>
+    </Tabs>
   );
 }
+
+const UserEngagement = () => {
+  return (
+    <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+      </div>
+    </div>
+  );
+};
+
+const ChatBotPerformance = () => {
+  return (
+    <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+      </div>
+    </div>
+  );
+};
+
+
+const QueryAnalysis = () => {
+  return (
+    <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+      </div>
+    </div>
+  );
+};
+
+
+
+const   ConversionMetrics = () => {
+  return (
+    <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
+       
+      </div>
+    </div>
+  );
+};

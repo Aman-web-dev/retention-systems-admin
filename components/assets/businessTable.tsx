@@ -1,5 +1,4 @@
 import React from "react";
-
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -62,9 +61,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { BusinessData } from "@/types/businessdata";
 
-function BusinessTable({ businesses }: { businesses: BusinessData[] }) {
-  console.log("business", businesses);
-  return (
+function  BusinessTable({ businesses }: { businesses: BusinessData[] }) {
+ 
+  return (businesses?
     <div>
       <TabsContent value="all">
         <Card x-chunk="dashboard-06-chunk-0">
@@ -79,10 +78,6 @@ function BusinessTable({ businesses }: { businesses: BusinessData[] }) {
               <TableHeader>
                 <TableRow>
                   <TableHead>Business Name</TableHead>
-                  {/* <TableHead>Status</TableHead>
-                        <TableHead className="hidden md:table-cell">
-                          Plan
-                        </TableHead> */}
                   <TableHead className="hidden md:table-cell">
                     Business Number
                   </TableHead>
@@ -94,23 +89,16 @@ function BusinessTable({ businesses }: { businesses: BusinessData[] }) {
                   </TableHead>
                 </TableRow>
               </TableHeader>
-
+                    
               <TableBody>
-                {businesses.length > 1
+                {businesses.length >= 1
                   ? businesses.map((business: BusinessData) => (
                       <TableRow key={business.business_number}>
-                        <Link href={`/admin/business/${business.business_number}`}>
                           <TableCell className="font-medium">
-                            {business.business_name}
-                          </TableCell>
+                        <Link href={`/admin/business/${business.business_number}`}>
+                        {business.business_name}
                         </Link>
-
-                        {/* <TableCell>
-                          <Badge variant="outline">Active</Badge>
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">
-                          $59.99
-                        </TableCell> */}
+                          </TableCell>
                         <TableCell className="hidden md:table-cell">
                           {business.business_number}
                         </TableCell>
@@ -171,7 +159,7 @@ function BusinessTable({ businesses }: { businesses: BusinessData[] }) {
         </Card>
       </TabsContent>
     </div>
-  );
+  :"");
 }
 
 export default BusinessTable;

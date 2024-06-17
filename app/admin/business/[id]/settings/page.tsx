@@ -1,7 +1,7 @@
-'use client'
+"use client";
 import Link from "next/link";
 import { CircleUser, Menu, Package2, Search } from "lucide-react";
-import * as React from "react"
+import * as React from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -27,7 +27,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState } from "react";
 
 export default function Dashboard() {
-  const [position, setPosition] = React.useState("bottom")
+  const [position, setPosition] = React.useState("bottom");
   return (
     <div className="flex min-h-screen w-full flex-col">
       <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
@@ -56,8 +56,8 @@ export default function Dashboard() {
               <CardHeader>
                 <CardTitle>Business Whatsapp Number</CardTitle>
                 <CardDescription>
-                  The Whatsapp Number Through which business&apos;s Customer will
-                  connect to the Bot
+                  The Whatsapp Number Through which business&apos;s Customer
+                  will connect to the Bot
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -78,7 +78,50 @@ export default function Dashboard() {
               </CardHeader>
               <CardContent>
                 <form className="flex flex-col gap-4">
-                  <Input placeholder="Project Name" defaultValue="86302*****" />
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild className="w-56">
+                      <Button variant="outline">Industry</Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-56">
+                      <DropdownMenuLabel>Industry Type</DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuRadioGroup
+                        value={position}
+                        onValueChange={setPosition}
+                      >
+                        <DropdownMenuRadioItem value="it">
+                          IT
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="agriculture">
+                          Agriculture
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="healthcare">
+                          Healthcare
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="finance">
+                          Finance
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="education">
+                          Education
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="manufacturing">
+                          Manufacturing
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="retail">
+                          Retail
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="construction">
+                          Construction
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="transportation">
+                          Transportation
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="entertainment">
+                          Entertainment
+                        </DropdownMenuRadioItem>
+                      </DropdownMenuRadioGroup>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </form>
               </CardContent>
 
@@ -103,7 +146,7 @@ export default function Dashboard() {
                         onValueChange={setPosition}
                       >
                         <DropdownMenuRadioItem value="top">
-                           0-10
+                          0-10
                         </DropdownMenuRadioItem>
                         <DropdownMenuRadioItem value="bottom">
                           10-50

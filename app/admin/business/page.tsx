@@ -62,7 +62,7 @@ import {
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import BusinessTable from "@/components/assets/businessTable";
+import BusinessTable from "@/components/graphs/businessTable";
 import { BusinessData } from "@/types/businessdata";
 import { useEffect } from "react";
 import ListSkeletonDemo from "@/components/skeletons/ListSkeleton";

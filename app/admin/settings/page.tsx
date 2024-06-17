@@ -89,7 +89,7 @@ export default function TabsDemo() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button>Save password</Button>
+            <Button>Save Changes</Button>
           </CardFooter>
         </Card>
       </TabsContent>

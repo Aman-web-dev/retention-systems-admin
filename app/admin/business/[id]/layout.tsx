@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/themeprovider/themeprovider";
-import "./globals.css";
+
 import { Inter as FontSans } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 import { cn } from "@/lib/utils";
@@ -14,28 +14,19 @@ const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
-export default function RootLayout({
+export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Sidebar>{children}</Sidebar>
-        </ThemeProvider>
-      </body>
-    </html>
+ <div className="">
+      <div className="flex flex-row items-center mx-auto  w-full max-w-6xl gap-8 my-8">
+          <h1 className="text-3xl font-semibold">Business Name</h1>
+          <h1 className="text-2xl font-semibold">94567028XX</h1>
+        </div>
+{children}
+ </div>
+   
   );
 }

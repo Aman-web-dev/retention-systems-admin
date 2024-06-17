@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import BusinessTable from "@/components/graphs/businessTable";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { UniversalCard } from "@/components/assets/UniversalCard";
@@ -16,6 +17,8 @@ import { Suspense } from "react";
 import { PlusCircle,Settings } from "lucide-react";
 import Link from "next/link";
 import WaveChart from "@/components/graphs/waveChart";
+import { PanelDropDown } from "@/components/assets/PanelDropDown";
+import FakeTable from '@/components/graphs/Table'
 
 export default function BusinessPage() {
   const params = useParams();
@@ -23,9 +26,11 @@ export default function BusinessPage() {
 
   return (
     <Tabs defaultValue="UserEngagement" className="w-[90%]">
-
       <div className="flex">
-      <TabsList>
+        <div className="lg:hidden">
+        <PanelDropDown/>
+        </div>
+      <TabsList className="hidden lg:flex">
         <TabsTrigger value="UserEngagement">User Engagement</TabsTrigger>
         <TabsTrigger value="ChatBotPerformance">Chat Bot Performance</TabsTrigger>
         <TabsTrigger value="queryAnalysis">User Query Analysis</TabsTrigger>
@@ -33,10 +38,12 @@ export default function BusinessPage() {
         Conversion Metrics
         </TabsTrigger>
       </TabsList>
+
+
       <div className="ml-auto flex items-center gap-2">
           <Button size="sm" className="h-8 gap-1">
+          <Link href={`/admin/business/${businessId}/settings`} className="flex flx-col gap-2 items-center">
             <Settings className="h-3.5 w-3.5" />
-            <Link href={`/admin/business/${businessId}/settings`}>
               <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                 Settings
               </span>
@@ -107,8 +114,9 @@ const QueryAnalysis = () => {
         <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
         <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
       </div>
-      <WaveChart/>
-      <WaveChart/>
+     <FakeTable/>
+     <FakeTable/>
+
     </div>
   );
 };

@@ -82,15 +82,8 @@ import {
 } from "@/components/data/tableData/DraftAccountData";
 import {AllAccountData,AllAccountHeadings} from '@/components/data/tableData/allAccountData'
 
-export default async function Dashboard() {
-  async function getData() {
-    const res = await fetch("https://retention-systems.vercel.app/business");
-    const data = await res.json();
-    console.log(data);
-    return data;
-  }
-
-  let data = await getData();
+export default  function Dashboard() {
+ 
 
   return (
     <Tabs defaultValue="all">

@@ -14,11 +14,15 @@ import { Progress } from "@/components/ui/progress";
 import { UniversalCard } from "@/components/assets/UniversalCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Suspense } from "react";
-import { PlusCircle,Settings } from "lucide-react";
+import { PlusCircle, Settings } from "lucide-react";
 import Link from "next/link";
 import WaveChart from "@/components/graphs/waveChart";
 import { PanelDropDown } from "@/components/assets/PanelDropDown";
-import FakeTable from '@/components/graphs/Table'
+import FakeTable from "@/components/graphs/Table";
+import ChatBotPerformance from "./sections/chatBotPerfomrance";
+import { UserEngagement } from "./sections/userEngagement";
+import { QueryAnalysis } from "./sections/queryAnalysis";
+import { ConversionMetrics } from "./sections/conversionMetrics";
 
 export default function BusinessPage() {
   const params = useParams();
@@ -28,32 +32,34 @@ export default function BusinessPage() {
     <Tabs defaultValue="UserEngagement" className="w-[90%]">
       <div className="flex">
         <div className="lg:hidden">
-        <PanelDropDown/>
+          <PanelDropDown />
         </div>
-      <TabsList className="hidden lg:flex">
-        <TabsTrigger value="UserEngagement">User Engagement</TabsTrigger>
-        <TabsTrigger value="ChatBotPerformance">Chat Bot Performance</TabsTrigger>
-        <TabsTrigger value="queryAnalysis">User Query Analysis</TabsTrigger>
-        <TabsTrigger value="conversionMetrics" className="hidden sm:flex">
-        Conversion Metrics
-        </TabsTrigger>
-      </TabsList>
+        <TabsList className="hidden lg:flex">
+          <TabsTrigger value="UserEngagement">User Engagement</TabsTrigger>
+          <TabsTrigger value="ChatBotPerformance">
+            Chat Bot Performance
+          </TabsTrigger>
+          <TabsTrigger value="conversionMetrics" className="hidden sm:flex">
+            Conversion Metrics
+          </TabsTrigger>
+          <TabsTrigger value="queryAnalysis">User Query Analysis</TabsTrigger>
 
+        </TabsList>
 
-      <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-2">
           <Button size="sm" className="h-8 gap-1">
-          <Link href={`/admin/business/${businessId}/settings`} className="flex flx-col gap-2 items-center">
-            <Settings className="h-3.5 w-3.5" />
+            <Link
+              href={`/admin/business/${businessId}/settings`}
+              className="flex flx-col gap-2 items-center"
+            >
+              <Settings className="h-3.5 w-3.5" />
               <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                 Settings
               </span>
             </Link>
           </Button>
         </div>
-
       </div>
-    
-
 
       <TabsContent value="UserEngagement">
         <UserEngagement />
@@ -64,76 +70,12 @@ export default function BusinessPage() {
       </TabsContent>
 
       <TabsContent value="queryAnalysis">
-        <QueryAnalysis/>
+        <QueryAnalysis />
       </TabsContent>
 
       <TabsContent value="conversionMetrics">
-        <ConversionMetrics/>
+        <ConversionMetrics />
       </TabsContent>
     </Tabs>
   );
 }
-
-const UserEngagement = () => {
-  return (
-    <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-      </div>
-      <WaveChart/>
-    </div>
-  );
-};
-
-const ChatBotPerformance = () => {
-  return (
-    <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-       
-      </div>
-      <WaveChart/>
-      <WaveChart/>
-
-    </div>
-  );
-};
-
-
-const QueryAnalysis = () => {
-  return (
-    <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-      </div>
-     <FakeTable/>
-     <FakeTable/>
-
-    </div>
-  );
-};
-
-
-
-const   ConversionMetrics = () => {
-  return (
-    <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-      </div>
-      <WaveChart/>
-      <WaveChart/>
-    </div>
-  );
-};

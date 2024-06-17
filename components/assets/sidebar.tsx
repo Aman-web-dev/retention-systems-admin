@@ -168,10 +168,12 @@ export default function Sidebar({
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
+              {/* <DropdownMenuItem>Profile</DropdownMenuItem> */}
+              <Link href={"/admin/settings"}>
               <DropdownMenuItem>Settings</DropdownMenuItem>
+              </Link>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+              {/* <DropdownMenuItem>Logout</DropdownMenuItem> */}
             </DropdownMenuContent>
           </DropdownMenu>
           <ModeToggle/>

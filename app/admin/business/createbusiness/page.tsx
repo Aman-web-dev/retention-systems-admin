@@ -45,7 +45,7 @@ export default function Dashboard() {
               </CardHeader>
               <CardContent>
                 <form>
-                  <Input placeholder="Store Name" />
+                  <Input placeholder="Business Name" />
                 </form>
               </CardContent>
             
@@ -60,7 +60,33 @@ export default function Dashboard() {
               </CardHeader>
               <CardContent>
                 <form className="flex flex-col gap-4">
-                  <Input placeholder="Project Name" defaultValue="86302*****" />
+                  <Input placeholder="Business Whatsapp Number"  />
+                </form>
+              </CardContent>
+            
+            </Card>
+
+            <Card x-chunk="dashboard-04-chunk-2">
+            <CardHeader>
+                <CardTitle>Business Email</CardTitle>
+                <CardDescription>
+                 Input The Email to recieve updates and details about the Bot directly
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form className="flex flex-col gap-4">
+                  <Input placeholder="businesname@email.com"  />
+                </form>
+              </CardContent>
+              <CardHeader>
+                <CardTitle>Business Contact Number</CardTitle>
+                <CardDescription>
+                  The  Number Through which  we can get Connected to business administration Directly
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form className="flex flex-col gap-4">
+                  <Input placeholder="Contact Details"  />
                 </form>
               </CardContent>
             

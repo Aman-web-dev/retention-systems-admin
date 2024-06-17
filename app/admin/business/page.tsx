@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -66,11 +65,24 @@ import BusinessTable from "@/components/graphs/businessTable";
 import { BusinessData } from "@/types/businessdata";
 import { useEffect } from "react";
 import ListSkeletonDemo from "@/components/skeletons/ListSkeleton";
-import { UniversalCard } from "@/components/assets/UniversalCard";
+
 import WaveChart from "@/components/graphs/waveChart";
+import FakeTable from "@/components/graphs/Table";
+import {
+  ActiveAccountHeadings,
+  ActiveAccountData,
+} from "@/components/data/tableData/ActiveAccountData";
+import {
+  InactiveAccountData,
+  InactiveAccountHeadings,
+} from "@/components/data/tableData/InactiveAccountData";
+import {
+  DraftAccountData,
+  DraftAccountHeadings,
+} from "@/components/data/tableData/DraftAccountData";
+import {AllAccountData,AllAccountHeadings} from '@/components/data/tableData/allAccountData'
 
 export default async function Dashboard() {
-
   async function getData() {
     const res = await fetch("https://retention-systems.vercel.app/business");
     const data = await res.json();
@@ -78,11 +90,10 @@ export default async function Dashboard() {
     return data;
   }
 
-let data = await getData()
+  let data = await getData();
 
   return (
     <Tabs defaultValue="all">
-    
       <div className="flex items-center">
         <TabsList>
           <TabsTrigger value="all">All</TabsTrigger>
@@ -103,55 +114,48 @@ let data = await getData()
           </Button>
         </div>
       </div>
-      {
-        data && <TabsContent value="all">
-             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-      </div>
-        <Suspense fallback={<p>Loading...</p>}>
-        <BusinessTable businesses={data} />
-        </Suspense>
+      <TabsContent value="all">
+        <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
+          <FakeTable
+            title="All Business"
+            description="Here wil be all the Business Accounts"
+            headings={AllAccountHeadings}
+            data={AllAccountData}
+          />
+        </div>
       </TabsContent>
-      }
-     
+
       <TabsContent value="active">
-      <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-      </div>
-      <WaveChart/>
-      <WaveChart/>
-    </div>
+        <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
+          <FakeTable
+            title="Active Business"
+            description="Here wil be all the Active Business Accounts"
+            headings={ActiveAccountHeadings}
+            data={ActiveAccountData}
+          />
+        </div>
       </TabsContent>
 
       <TabsContent value="inactive">
-      <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-      </div>
-      <WaveChart/>
-    </div>
+        <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
+          <FakeTable
+            title="Inactive Business"
+            description="Here wil be all the Inactive Business Accounts"
+            headings={InactiveAccountHeadings}
+            data={InactiveAccountData}
+          />
+        </div>
       </TabsContent>
 
       <TabsContent value="draftAccounts">
-      <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-        <UniversalCard Heading="xyz" Description="fsbaskbasjkb" />
-      </div>
-      <WaveChart/>
-    </div>
+        <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
+          <FakeTable
+            title="Draft Business"
+            description="Here will Be all the Draft Business Accounts"
+            headings={DraftAccountHeadings}
+            data={DraftAccountData}
+          />
+        </div>
       </TabsContent>
     </Tabs>
   );

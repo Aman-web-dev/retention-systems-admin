@@ -11,23 +11,27 @@ import {
   
   interface CardProps {
     Heading: string;
+    value:string;
     Description: string;
+    progress:number;
   }
   
-  export function UniversalCard({ Heading, Description }: CardProps) {
+  export function UniversalCard({ Heading,value, Description,progress }: CardProps) {
     return (
       <Card x-chunk="dashboard-05-chunk-1">
-        <CardHeader className="pb-2">
-          <CardTitle className="text-4xl">{Heading}</CardTitle>
+        <CardHeader className="pb-2 text-center">
+         
+          <CardTitle className="text-xl ">{Heading}</CardTitle>
+          <CardTitle className="text-4xl  px-4 ">{value}</CardTitle>
           <CardDescription>{Description}</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="text-xs text-muted-foreground">
-            {} from last week
+          <div className="text-xs text-muted-foreground text-center">
+            {25+'%'} from last week
           </div>
         </CardContent>
         <CardFooter>
-          <Progress value={25} aria-label="25% increase" />
+          <Progress value={progress} aria-label="25% increase" />
         </CardFooter>
       </Card>
     );

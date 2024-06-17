@@ -15,8 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-
-import { CardHeader,CardDescription,CardTitle } from "../ui/card";
+import { CardHeader, CardDescription, CardTitle } from "../ui/card";
 
 const MyResponsiveBump = (
   // @ts-ignore
@@ -69,119 +68,71 @@ const MyResponsiveBump = (
   />
 );
 
+import { Card } from "../ui/card";
+
 type Checked = DropdownMenuCheckboxItemProps["checked"];
 
-interface dataType {
-  x: string,
-  y: number,
+interface ChartDataType {
+  id: string;
+  data: {
+    x: string;
+    y: number;
+  }[];
 }
-interface chartDataType{
-  id: string,
-  data:dataType[] ,
+
+interface WaveChartProps {
+  data: Record<string, ChartDataType>;
+  metadata: {
+    title: string;
+    description: string;
+  };
 }
 
-export default function WaveChart() {
-  const chartData = {
-  active:{
-      id: "Active Accounts",
-      data: [
-        {
-          x: "May",
-          y: 60,
-        },
-        {
-          x: "June",
-          y: 2,
-        },
-        {
-          x: "July",
-          y: 5,
-        },
-        {
-          x: "August",
-          y: 1,
-        },
-        {
-          x: "September",
-          y: 12,
-        },
-      ],
-    },
-   inactive: {
-      id: "Inactive Accounts",
-      data: [
-        {
-          x: "May",
-          y: 9,
-        },
-        {
-          x: "June",
-          y: 12,
-        },
-        {
-          x: "July",
-          y: 10,
-        },
-        {
-          x: "August",
-          y: 4,
-        },
-        {
-          x: "September",
-          y: 2,
-        },
-      ],
-    },
-  }
+export default function WaveChart({ data, metadata }: WaveChartProps) {
+  const firstKey = Object.keys(data)[0];
+  const [selectedDataKeys, setSelectedDataKeys] = React.useState<string[]>([
+    firstKey,
+  ]);
 
+  const handleCheckedChange = (key: string, checked: boolean) => {
+    setSelectedDataKeys((prev) =>
+      checked ? [...prev, key] : prev.filter((k) => k !== key)
+    );
+  };
 
-  const [showActiveAccounts, setshowActiveAccounts] = React.useState<Checked>(true);
-  const [showInactiveAccounts, setshowInactiveAccounts] = React.useState<Checked>(false);
-  const [currentData, setCurrentData] = React.useState<chartDataType[]>([]);
-
-
-  React.useEffect(()=>{
-    const newData: chartDataType[] = [];
-
-    if (showActiveAccounts) newData.push(chartData.active);
-    if (showInactiveAccounts) newData.push(chartData.inactive);
-
-    setCurrentData(newData);
-  }, [showActiveAccounts, showInactiveAccounts]);
+  const currentData = selectedDataKeys.map((key) => data[key]);
 
   return (
-    <div className="flex flex-col h-[500px] w-[95%] dark:text-white  justify-end ">
+    <Card x-chunk="dashboard-05-chunk-2">
+      <div className="flex flex-col h-[500px] w-[95%] dark:text-white justify-end ">
         <CardHeader className="pb-2">
-            <CardTitle className="text-4xl">Title</CardTitle>
-            <CardDescription>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, autem iste possimus placeat, magni at quisquam soluta debitis nemo quidem dolor iure, praesentium sequi impedit suscipit! Expedita labore nisi laboriosam!</CardDescription>
-
-      </CardHeader>
-      <div className="flex flex-col justify-end  w-40 m-4">
-    
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline">Select</Button>
-          </DropdownMenuTrigger>  
-          <DropdownMenuContent className="w-56">
-            <DropdownMenuLabel>Data</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuCheckboxItem
-              checked={showActiveAccounts}
-              onCheckedChange={setshowActiveAccounts}
-            >
-            Active Accounts
-            </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem
-              checked={showInactiveAccounts}
-              onCheckedChange={setshowInactiveAccounts}
-            >
-            Inactive Accounts
-            </DropdownMenuCheckboxItem>
-
-          </DropdownMenuContent>
-        </DropdownMenu>
+          <CardTitle>{metadata.title}</CardTitle>
+          <CardDescription>{metadata.description}</CardDescription>
+        </CardHeader>
+        <div className="flex flex-col justify-end w-40 m-4">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">Select</Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56">
+              <DropdownMenuLabel>Data</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              {Object.keys(data).map((key) => (
+                <DropdownMenuCheckboxItem
+                  key={key}
+                  checked={selectedDataKeys.includes(key)}
+                  onCheckedChange={(checked) =>
+                    handleCheckedChange(key, checked)
+                  }
+                >
+                  {data[key].id}
+                </DropdownMenuCheckboxItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+        <MyResponsiveBump data={currentData} className="text-white" />
       </div>
-      <MyResponsiveBump data={currentData} className="text-white" />
-    </div>
+    </Card>
   );
 }

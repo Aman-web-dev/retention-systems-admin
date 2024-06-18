@@ -1,5 +1,5 @@
 import React from 'react'
-import FakeTable from '@/components/graphs/Table'
+import {FakeTable} from '@/components/graphs/Table'
 import {QueryKeywordHeadings,QueryKeywordData} from '@/components/data/tableData/QueryKeywordsData'
 
 function KeywordSection() {

@@ -112,7 +112,7 @@ export default function WaveChart({ data, metadata }: WaveChartProps) {
         <div className="flex flex-col justify-end w-40 m-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline">Select</Button>
+              <Button variant="outline">Select Data</Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
               <DropdownMenuLabel>Data</DropdownMenuLabel>

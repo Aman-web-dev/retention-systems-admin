@@ -67,7 +67,7 @@ import { useEffect } from "react";
 import ListSkeletonDemo from "@/components/skeletons/ListSkeleton";
 
 import WaveChart from "@/components/graphs/waveChart";
-import FakeTable from "@/components/graphs/Table";
+import {FakeTable} from "@/components/graphs/Table";
 import {
   ActiveAccountHeadings,
   ActiveAccountData,

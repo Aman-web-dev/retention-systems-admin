@@ -1,5 +1,5 @@
 import React from 'react'
-import FakeTable from '@/components/graphs/Table'
+import {FakeTable} from '@/components/graphs/Table'
 import {QueryTopicHeadings,QueryTopicData} from '@/components/data/tableData/QueryTopicsData'
  
 function TopicSection() {

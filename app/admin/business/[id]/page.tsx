@@ -18,7 +18,7 @@ import { PlusCircle, Settings } from "lucide-react";
 import Link from "next/link";
 import WaveChart from "@/components/graphs/waveChart";
 import { PanelDropDown } from "@/components/assets/PanelDropDown";
-import FakeTable from "@/components/graphs/Table";
+import {FakeTable} from "@/components/graphs/Table";
 import ChatBotPerformance from "./sections/chatBotPerfomrance";
 import { UserEngagement } from "./sections/userEngagement";
 import { QueryAnalysis } from "./sections/queryAnalysis";

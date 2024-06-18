@@ -98,8 +98,8 @@ export default  function Dashboard() {
         </TabsList>
         <div className="ml-auto flex items-center gap-2">
           <Button size="sm" className="h-8 gap-1">
+            <Link href={"/admin/business/createbusiness"} className="flex flex-row items-center gap-2">
             <PlusCircle className="h-3.5 w-3.5" />
-            <Link href={"/admin/business/createbusiness"}>
               <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                 Add Business
               </span>

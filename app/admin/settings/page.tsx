@@ -38,6 +38,9 @@ export default function TabsDemo() {
               <Input id="username" defaultValue="@peduarte" />
             </div>
           </CardContent>
+          <CardFooter>
+            <Button>Save Changes</Button>
+          </CardFooter>
 
  
        

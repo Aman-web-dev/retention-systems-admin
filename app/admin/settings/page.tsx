@@ -18,14 +18,10 @@ import {
 
 export default function TabsDemo() {
   return (
-    <Tabs defaultValue="account" className="w-[90%] mx-auto">
-      <TabsList className="grid w-full grid-cols-3">
-        <TabsTrigger value="account">Account</TabsTrigger>
-        <TabsTrigger value="password">Password</TabsTrigger>
-        <TabsTrigger value="Email">Email</TabsTrigger>
-      </TabsList>
-      <TabsContent value="account">
-        <Card>
+    <Card defaultValue="account" className="w-[90%] mx-auto">
+   
+      <div>
+ 
           <CardHeader>
             <CardTitle>Account</CardTitle>
             <CardDescription>
@@ -42,13 +38,9 @@ export default function TabsDemo() {
               <Input id="username" defaultValue="@peduarte" />
             </div>
           </CardContent>
-          <CardFooter>
-            <Button>Save changes</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-      <TabsContent value="password">
-        <Card>
+
+ 
+       
           <CardHeader>
             <CardTitle>Password</CardTitle>
             <CardDescription>
@@ -68,10 +60,9 @@ export default function TabsDemo() {
           <CardFooter>
             <Button>Save password</Button>
           </CardFooter>
-        </Card>
-      </TabsContent>
-      <TabsContent value="Email">
-        <Card>
+
+
+      
           <CardHeader>
             <CardTitle>Email</CardTitle>
             <CardDescription>
@@ -88,11 +79,11 @@ export default function TabsDemo() {
               <Input id="new" type="password" />
             </div>
           </CardContent>
-          <CardFooter>
+
+      </div>
+      <CardFooter>
             <Button>Save Changes</Button>
           </CardFooter>
-        </Card>
-      </TabsContent>
-    </Tabs>
+    </Card>
   )
 }

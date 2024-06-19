@@ -18,7 +18,7 @@ import { PlusCircle, Settings } from "lucide-react";
 import Link from "next/link";
 import WaveChart from "@/components/graphs/waveChart";
 import { PanelDropDown } from "@/components/assets/PanelDropDown";
-import {FakeTable} from "@/components/graphs/Table";
+import { FakeTable } from "@/components/graphs/Table";
 import ChatBotPerformance from "./sections/chatBotPerfomrance";
 import { UserEngagement } from "./sections/userEngagement";
 import { QueryAnalysis } from "./sections/queryAnalysis";
@@ -43,11 +43,10 @@ export default function BusinessPage() {
             Conversion Metrics
           </TabsTrigger>
           <TabsTrigger value="queryAnalysis">User Query Analysis</TabsTrigger>
-
         </TabsList>
 
         <div className="ml-auto flex items-center gap-2">
-          <Button size="sm" className="h-8 gap-1">
+          <Button size="lg" className="h-10 gap-1">
             <Link
               href={`/admin/business/${businessId}/settings`}
               className="flex flx-col gap-2 items-center"
@@ -60,22 +59,23 @@ export default function BusinessPage() {
           </Button>
         </div>
       </div>
+      <div className="mt-8">
+        <TabsContent value="UserEngagement">
+          <UserEngagement />
+        </TabsContent>
 
-      <TabsContent value="UserEngagement">
-        <UserEngagement />
-      </TabsContent>
+        <TabsContent value="ChatBotPerformance">
+          <ChatBotPerformance />
+        </TabsContent>
 
-      <TabsContent value="ChatBotPerformance">
-        <ChatBotPerformance />
-      </TabsContent>
+        <TabsContent value="queryAnalysis">
+          <QueryAnalysis />
+        </TabsContent>
 
-      <TabsContent value="queryAnalysis">
-        <QueryAnalysis />
-      </TabsContent>
-
-      <TabsContent value="conversionMetrics">
-        <ConversionMetrics />
-      </TabsContent>
+        <TabsContent value="conversionMetrics">
+          <ConversionMetrics />
+        </TabsContent>
+      </div>
     </Tabs>
   );
 }

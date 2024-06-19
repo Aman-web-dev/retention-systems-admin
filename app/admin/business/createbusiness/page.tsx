@@ -3,6 +3,8 @@ import Link from "next/link";
 import { CircleUser, Menu, Package2, Search } from "lucide-react";
 import * as React from "react";
 import { Button } from "@/components/ui/button";
+import { Check, ChevronsUpDown } from "lucide-react";
+
 import {
   Card,
   CardContent,
@@ -48,9 +50,6 @@ export default function Dashboard() {
                   <Input placeholder="Business Name" />
                 </form>
               </CardContent>
-            
-            </Card>
-            <Card x-chunk="dashboard-04-chunk-2">
               <CardHeader>
                 <CardTitle>Business Whatsapp Number</CardTitle>
                 <CardDescription>
@@ -60,131 +59,134 @@ export default function Dashboard() {
               </CardHeader>
               <CardContent>
                 <form className="flex flex-col gap-4">
-                  <Input placeholder="Business Whatsapp Number"  />
+                  <Input placeholder="Business Whatsapp Number" />
                 </form>
               </CardContent>
-            
-            </Card>
-
-            <Card x-chunk="dashboard-04-chunk-2">
-            <CardHeader>
+              <CardHeader>
                 <CardTitle>Business Email</CardTitle>
                 <CardDescription>
-                 Input The Email to recieve updates and details about the Bot directly
+                  Input The Email to recieve updates and details about the Bot
+                  directly
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <form className="flex flex-col gap-4">
-                  <Input placeholder="businesname@email.com"  />
+                  <Input placeholder="businesname@email.com" />
                 </form>
               </CardContent>
               <CardHeader>
                 <CardTitle>Business Contact Number</CardTitle>
                 <CardDescription>
-                  The  Number Through which  we can get Connected to business administration Directly
+                  The Number Through which we can get Connected to business
+                  administration Directly
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <form className="flex flex-col gap-4">
-                  <Input placeholder="Contact Details"  />
-                </form>
-              </CardContent>
-            
-            </Card>
-
-            <Card x-chunk="dashboard-04-chunk-2">
-              <CardHeader>
-                <CardTitle>Industry Type</CardTitle>
-
-                <CardDescription>The Type of business</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form className="flex flex-col gap-4">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild className="w-56">
-                      <Button variant="outline">Industry</Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-56">
-                      <DropdownMenuLabel>Industry Type</DropdownMenuLabel>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuRadioGroup
-                        value={position}
-                        onValueChange={setPosition}
-                      >
-                        <DropdownMenuRadioItem value="it">
-                          IT
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="agriculture">
-                          Agriculture
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="healthcare">
-                          Healthcare
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="finance">
-                          Finance
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="education">
-                          Education
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="manufacturing">
-                          Manufacturing
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="retail">
-                          Retail
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="construction">
-                          Construction
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="transportation">
-                          Transportation
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="entertainment">
-                          Entertainment
-                        </DropdownMenuRadioItem>
-                      </DropdownMenuRadioGroup>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                  <Input placeholder="Contact Details" />
                 </form>
               </CardContent>
 
-              <CardHeader>
-                <CardTitle>Employee Size</CardTitle>
+              <div className="flex flex-row    justify-between">
+                <CardContent>
+                  <CardHeader>
+                    <CardTitle>Industry Type</CardTitle>
 
-                <CardDescription>
-                  Number of Employes working at the business
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form className="flex flex-col gap-4">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild className="w-56">
-                      <Button variant="outline">Employee Size</Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-56">
-                      <DropdownMenuLabel>Employee Size</DropdownMenuLabel>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuRadioGroup
-                        value={position}
-                        onValueChange={setPosition}
-                      >
-                        <DropdownMenuRadioItem value="top">
-                          0-10
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="bottom">
-                          10-50
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="right">
-                          50-100
-                        </DropdownMenuRadioItem>
-                      </DropdownMenuRadioGroup>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </form>
-              </CardContent>
-            
-            </Card>
+                    <CardDescription>The Type of business</CardDescription>
+                  </CardHeader>
+                  <form className="flex flex-col gap-4">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild className="w-56">
+                        <Button variant="outline">
+                          <ChevronsUpDown className="ml-2 h-4 w-4 mr-8 shrink-0 opacity-100" />
+                          Industry
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="w-56">
+                        <DropdownMenuLabel>Industry Type</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuRadioGroup
+                          value={position}
+                          onValueChange={setPosition}
+                        >
+                          <DropdownMenuRadioItem value="it">
+                            IT
+                          </DropdownMenuRadioItem>
+                          <DropdownMenuRadioItem value="agriculture">
+                            Agriculture
+                          </DropdownMenuRadioItem>
+                          <DropdownMenuRadioItem value="healthcare">
+                            Healthcare
+                          </DropdownMenuRadioItem>
+                          <DropdownMenuRadioItem value="finance">
+                            Finance
+                          </DropdownMenuRadioItem>
+                          <DropdownMenuRadioItem value="education">
+                            Education
+                          </DropdownMenuRadioItem>
+                          <DropdownMenuRadioItem value="manufacturing">
+                            Manufacturing
+                          </DropdownMenuRadioItem>
+                          <DropdownMenuRadioItem value="retail">
+                            Retail
+                          </DropdownMenuRadioItem>
+                          <DropdownMenuRadioItem value="construction">
+                            Construction
+                          </DropdownMenuRadioItem>
+                          <DropdownMenuRadioItem value="transportation">
+                            Transportation
+                          </DropdownMenuRadioItem>
+                          <DropdownMenuRadioItem value="entertainment">
+                            Entertainment
+                          </DropdownMenuRadioItem>
+                          <DropdownMenuRadioItem value="entertainment">
+                            Other
+                          </DropdownMenuRadioItem>
+                        </DropdownMenuRadioGroup>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </form>
+                </CardContent>
 
-            <Card x-chunk="dashboard-04-chunk-1">
+                <CardContent>
+                  <CardHeader>
+                    <CardTitle>Employee Size</CardTitle>
+
+                    <CardDescription>
+                      Number of Employes working at the business
+                    </CardDescription>
+                  </CardHeader>
+                  <form className="flex flex-col gap-4">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild className="w-56">
+                        <Button variant="outline">
+                          <ChevronsUpDown className="ml-2 h-4 w-4 mr-8 shrink-0 opacity-100" />
+                          Employee Size
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="w-56">
+                        <DropdownMenuLabel>Employee Size</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuRadioGroup
+                          value={position}
+                          onValueChange={setPosition}
+                        >
+                          <DropdownMenuRadioItem value="top">
+                            0-10
+                          </DropdownMenuRadioItem>
+                          <DropdownMenuRadioItem value="bottom">
+                            10-50
+                          </DropdownMenuRadioItem>
+                          <DropdownMenuRadioItem value="right">
+                            50-100
+                          </DropdownMenuRadioItem>
+                        </DropdownMenuRadioGroup>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </form>
+                </CardContent>
+              </div>
+
               <CardHeader>
                 <CardTitle>Api Key</CardTitle>
                 <CardDescription>
@@ -196,10 +198,7 @@ export default function Dashboard() {
                   <Input placeholder="***************************************************" />
                 </form>
               </CardContent>
-            
-            </Card>
 
-            <Card x-chunk="dashboard-04-chunk-1">
               <CardHeader>
                 <CardTitle>Private App ID</CardTitle>
                 <CardDescription>
@@ -211,10 +210,7 @@ export default function Dashboard() {
                   <Input placeholder="*********************************************************" />
                 </form>
               </CardContent>
-            
-            </Card>
 
-            <Card x-chunk="dashboard-04-chunk-1">
               <CardHeader>
                 <CardTitle>Project Id</CardTitle>
                 <CardDescription>
@@ -226,7 +222,6 @@ export default function Dashboard() {
                   <Input placeholder="*********************************************************" />
                 </form>
               </CardContent>
-            
             </Card>
           </div>
         </div>

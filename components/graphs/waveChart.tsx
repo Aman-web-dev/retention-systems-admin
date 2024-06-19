@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { CardHeader, CardDescription, CardTitle } from "../ui/card";
-
+import { Check, ChevronsUpDown } from "lucide-react"
 const MyResponsiveBump = (
   // @ts-ignore
   props: any
@@ -105,14 +105,17 @@ export default function WaveChart({ data, metadata }: WaveChartProps) {
   return (
     <Card x-chunk="dashboard-05-chunk-2">
       <div className="flex flex-col h-[500px] w-[95%] dark:text-white justify-end ">
+        <div className="flex flex-row items-center justify-between">
         <CardHeader className="pb-2">
           <CardTitle>{metadata.title}</CardTitle>
           <CardDescription>{metadata.description}</CardDescription>
         </CardHeader>
-        <div className="flex flex-col justify-end w-40 m-4">
-          <DropdownMenu>
+        <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline">Select Data</Button>
+              <Button variant={"secondary"}>
+              <ChevronsUpDown className="ml-2 h-6 w-6 mr-4 shrink-0 opacity-100" />
+                
+                Select Data</Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
               <DropdownMenuLabel>Data</DropdownMenuLabel>
@@ -130,6 +133,7 @@ export default function WaveChart({ data, metadata }: WaveChartProps) {
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
+        
         </div>
         <MyResponsiveBump data={currentData} className="text-white" />
       </div>

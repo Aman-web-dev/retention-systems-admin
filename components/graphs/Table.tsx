@@ -25,6 +25,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "../ui/button";
+import { Check, ChevronsUpDown } from "lucide-react"
 import { Badge } from "lucide-react";
 import Link from "next/link";
 interface Heading {
@@ -56,15 +57,18 @@ export  function FakeTable({ title, description, headings, data }: FakeTableProp
 
   return (
     <Card>
+
+      <div className="flex md:flex-row items-center justify-between">
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
 
-      <CardContent>
-        <DropdownMenu >
+      <DropdownMenu >
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="my-8">Select Columns</Button>
+          <Button variant={"secondary"} className="mr-8">
+              <ChevronsUpDown className="ml-2 h-6 w-6 mr-4 shrink-0 opacity-100" />
+                Select Data</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56 my-8">
             <DropdownMenuLabel>Columns</DropdownMenuLabel>
@@ -82,6 +86,11 @@ export  function FakeTable({ title, description, headings, data }: FakeTableProp
             ))}
           </DropdownMenuContent>
         </DropdownMenu>
+      </div>
+    
+
+      <CardContent>
+       
 
         <Table>
           <TableHeader>

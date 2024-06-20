@@ -20,7 +20,7 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex flex-1 flex-col items-center  bg-muted/40 2xl:max-w-[1000px] 2xl:mx-auto">
+    <div className="flex flex-1 flex-col items-center 2xl:max-w-[1000px] 2xl:mx-auto">
       <div className="flex md:flex-row flex-col sm:items-center gap-8 my-6">
         <h1 className="text-3xl font-semibold">Business Name</h1>
         <h1 className="text-2xl font-semibold">94567028XX</h1>

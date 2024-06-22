@@ -113,9 +113,9 @@ export default function WaveChart({ data, metadata }: WaveChartProps) {
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant={"secondary"}>
-              <ChevronsUpDown className="ml-2 h-6 w-6 mr-4 shrink-0 opacity-100" />
-                
-                Select Data</Button>
+                Select Data
+              <ChevronsUpDown className="ml-2 h-4 w-4 mr-4 shrink-0 opacity-100" />
+              </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
               <DropdownMenuLabel>Data</DropdownMenuLabel>

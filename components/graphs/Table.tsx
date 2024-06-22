@@ -67,8 +67,11 @@ export  function FakeTable({ title, description, headings, data }: FakeTableProp
       <DropdownMenu >
           <DropdownMenuTrigger asChild>
           <Button variant={"secondary"} className="mr-8">
-              <ChevronsUpDown className="ml-2 h-6 w-6 mr-4 shrink-0 opacity-100" />
-                Select Data</Button>
+                Select Data
+                
+              <ChevronsUpDown className="ml-2 h-4 w-4 mr-4 shrink-0 opacity-100" />
+                
+                </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56 my-8">
             <DropdownMenuLabel>Columns</DropdownMenuLabel>

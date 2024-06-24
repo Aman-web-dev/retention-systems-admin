@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react";
 import {
   Tooltip,
@@ -18,6 +20,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
+
+import { signOut, useSession } from "next-auth/react";
+
+
 import BreadcrumbComponent from "./BreadCrum";
 import { Badge } from "@/components/ui/badge";
 import { Users } from "lucide-react";
@@ -57,7 +64,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { ModeToggle } from "../themeprovider/themeToggler";
+import { ModeToggle } from "./themeToggler";
 
 
 export default function Sidebar({
@@ -173,7 +180,7 @@ export default function Sidebar({
               <DropdownMenuItem>Settings</DropdownMenuItem>
               </Link>
               <DropdownMenuSeparator />
-              {/* <DropdownMenuItem>Logout</DropdownMenuItem> */}
+              <DropdownMenuItem onClick={() => signOut()}>Logout</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
           <ModeToggle/>
